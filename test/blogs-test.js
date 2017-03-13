@@ -11,16 +11,16 @@ import blogs from '../blogs'
 test('GET /:id', async t => {
   let id = uuid.v4()
 
-  let service = micro(blogs)
+  let server = micro(blogs)
 
-  let url = await listen(service)
+  let url = await listen(server)
   let body = await request({ uri: `${url}/${id}`, json: true })
 
   t.deepEqual(body, { id })
 })
 
 // Method for pushPost
-test.todo('POST /')
+// test.todo('POST /')
 
 // Method for likePost
-test.todo('POST like/:id')
+// test.todo('POST like/:id')
