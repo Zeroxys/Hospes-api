@@ -3,7 +3,6 @@
 import test from 'ava'
 import request from 'request-promise'
 import micro from 'micro'
-import uuid from 'uuid-base62'
 import listen from 'test-listen'
 import blogs from '../blogs'
 import fixtures from './fixtures/'
