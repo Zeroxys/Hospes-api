@@ -6,17 +6,18 @@ import micro from 'micro'
 import uuid from 'uuid-base62'
 import listen from 'test-listen'
 import blogs from '../blogs'
+import fixtures from './fixtures/'
 
 // Method for getPost
 test('GET /:id', async t => {
-  let id = uuid.v4()
+  let blog = fixtures.getBlog()
 
   let server = micro(blogs)
 
   let url = await listen(server)
-  let body = await request({ uri: `${url}/${id}`, json: true })
+  let body = await request({ uri: `${url}/${blog.public_id}`, json: true })
 
-  t.deepEqual(body, { id })
+  t.deepEqual(body, blog)
 })
 
 // Method for pushPost
