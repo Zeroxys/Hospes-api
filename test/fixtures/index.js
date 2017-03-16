@@ -5,8 +5,14 @@ export default {
       publicId: '24b6fe7a-8bbb-4612-aafc-56cf3296b300',
       userId: 'Miguel Zavala',
       src: 'http://hospes.com/blog/17hlQcrRmEsmerNvKMC6Q0',
+      liked: false,
+      likes: 0,
       description: 'description',
       createdAt: new Date().toString()
     }
+  },
+
+  getBlogs () {
+    return [this.getBlog(), this.getBlog(), this.getBlog()]
   }
 }

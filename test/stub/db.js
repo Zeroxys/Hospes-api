@@ -17,4 +17,16 @@ export default class Db {
   saveBlog (blog) {
     return Promise.resolve(fixtures.getBlog())
   }
+
+  likeBlog (id) {
+    let blog = fixtures.getBlog()
+    blog.liked = true
+    blog.likes = 1
+    return Promise.resolve(blog)
+  }
+
+  getBlogs () {
+    return Promise.resolve([fixtures.getBlog(), fixtures.getBlog(), fixtures.getBlog()
+    ])
+  }
 }

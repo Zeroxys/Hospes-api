@@ -15,6 +15,15 @@ if (env === 'test') {
 
 const hash = new HttpHash()
 
+// Get list blogs
+hash.set('GET /list', async function list (req, res, params) {
+  await db.connect()
+  let blogs = await db.getBlogs()
+  await db.disconnect()
+
+  send(res, 200, blogs)
+})
+
 // Definimos la ruta obtener blog
 hash.set('GET /:id', async function getBlog (req, res, params) {
   let id = params.id
@@ -33,6 +42,15 @@ hash.set('POST /', async function postBlog (req, res, params) {
   let created = await db.saveBlog(blog)
   await db.disconnect()
   send(res, 201, created)
+})
+
+hash.set('POST /:id/like', async function likeBlog (req, res, params) {
+  let id = params.id
+  await db.connect()
+  let blog = await db.likeBlog(id)
+  await db.disconnect()
+
+  send(res, 201, blog)
 })
 
 // Logica para cuando saber como manejar una peticion

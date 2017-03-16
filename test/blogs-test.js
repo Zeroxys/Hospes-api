@@ -45,5 +45,37 @@ test('POST /', async t => {
   t.deepEqual(response.body, blog)
 })
 
-// Method for likePost
-test.todo('POST like/:id')
+// Method for like a Blog
+test('POST like/:id', async t => {
+  let blog = fixtures.getBlog()
+  let url = t.context.url
+
+  let options = {
+    method: 'POST',
+    uri: `${url}/${blog.id}/like`,
+    json: true
+  }
+
+  let body = await request(options)
+  let blogNew = JSON.parse(JSON.stringify(blog))
+  blogNew.liked = true
+  blogNew.likes = 1
+
+  t.deepEqual(body, blogNew)
+})
+
+// Method for get Blogs Test
+test('GET /blogs', async t => {
+  let blogs = fixtures.getBlogs()
+  let url = t.context.url
+
+  let options = {
+    method: 'GET',
+    uri: `${url}/list`,
+    json: true
+  }
+
+  let body = await request(options)
+
+  t.deepEqual(body, blogs)
+})
