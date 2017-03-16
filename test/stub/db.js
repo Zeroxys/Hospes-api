@@ -29,4 +29,8 @@ export default class Db {
     return Promise.resolve([fixtures.getBlog(), fixtures.getBlog(), fixtures.getBlog()
     ])
   }
+
+  saveUser (user) {
+    return Promise.resolve(fixtures.getUser())
+  }
 }

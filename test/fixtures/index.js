@@ -14,5 +14,16 @@ export default {
 
   getBlogs () {
     return [this.getBlog(), this.getBlog(), this.getBlog()]
+  },
+
+  getUser () {
+    return {
+      id: '24b6fe7a-8bbb-4612-aafc-56cf3296b300',
+      name: 'Miguel Zavala',
+      username: 'Miguel',
+      email: 'miguel@mail.com',
+      password: 'miguel123',
+      createdAt: new Date().toString()
+    }
   }
 }
